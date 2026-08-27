@@ -41,13 +41,13 @@ export default function Layout({ children }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="app-shell min-h-screen bg-gray-50">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       {/* Main content */}
       <div className="lg:mr-72">
         {/* Header */}
-        <header className="sticky top-0 z-30 bg-white border-b border-gray-200 px-4 lg:px-8 py-4">
+        <header className="app-header sticky top-0 z-30 bg-white border-b border-gray-200 px-4 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <button
               onClick={() => setSidebarOpen(true)}
@@ -91,7 +91,7 @@ export default function Layout({ children }) {
         </header>
 
         {/* Page content */}
-        <main className="p-4 pb-28 lg:p-8 lg:pb-8">{children}</main>
+        <main className="app-main p-4 pb-28 lg:p-8 lg:pb-8">{children}</main>
         <BottomNav />
       </div>
     </div>
