@@ -1,14 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import Sidebar from './Sidebar';
-import { Menu, LogOut, User } from 'lucide-react';
+import BottomNav from './BottomNav';
+import { Download, Menu, LogOut, User } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 export default function Layout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [installPrompt, setInstallPrompt] = useState(null);
   const { adminData, logout } = useAuth();
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setInstallPrompt(event);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
   const navigate = useNavigate();
+
+  const handleInstall = async () => {
+    if (!installPrompt) return;
+
+    await installPrompt.prompt();
+    await installPrompt.userChoice;
+    setInstallPrompt(null);
+  };
 
   const handleLogout = async () => {
     try {
@@ -49,6 +69,16 @@ export default function Layout({ children }) {
                 </div>
               </div>
 
+              {installPrompt && (
+                <button
+                  onClick={handleInstall}
+                  className="flex items-center gap-2 rounded-lg bg-teal-50 px-3 py-2 text-sm font-semibold text-teal-700 transition-colors hover:bg-teal-100"
+                >
+                  <Download className="h-4 w-4" />
+                  <span className="hidden sm:inline">تثبيت التطبيق</span>
+                </button>
+              )}
+
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
@@ -61,7 +91,8 @@ export default function Layout({ children }) {
         </header>
 
         {/* Page content */}
-        <main className="p-4 lg:p-8">{children}</main>
+        <main className="p-4 pb-28 lg:p-8 lg:pb-8">{children}</main>
+        <BottomNav />
       </div>
     </div>
   );

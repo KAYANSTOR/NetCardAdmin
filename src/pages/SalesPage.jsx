@@ -135,13 +135,13 @@ export default function SalesPage() {
   );
 
   const formatNumber = (num) => {
-    return new Intl.NumberFormat('ar-IQ').format(Math.round(num || 0));
+    return new Intl.NumberFormat('ar-YE').format(Math.round(num || 0));
   };
 
   const formatDate = (timestamp) => {
     if (!timestamp) return '—';
     const date = new Date(timestamp);
-    return date.toLocaleDateString('ar-IQ', {
+    return date.toLocaleDateString('ar-YE', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -181,21 +181,21 @@ export default function SalesPage() {
           value={formatNumber(grandTotals.totalSales)}
           icon={DollarSign}
           color="blue"
-          subtitle="دينار"
+          subtitle="ريال يمني"
         />
         <StatsCard
           title="إجمالي الصافي"
           value={formatNumber(grandTotals.totalNet)}
           icon={Receipt}
           color="cyan"
-          subtitle="دينار"
+          subtitle="ريال يمني"
         />
         <StatsCard
           title="أرباح الإدارة"
           value={formatNumber(grandTotals.totalEarnings)}
           icon={TrendingUp}
           color="purple"
-          subtitle="دينار"
+          subtitle="ريال يمني"
         />
         <StatsCard
           title="عمليات مكتملة"

@@ -121,7 +121,7 @@ export default function UserBillingModal({ isOpen, onClose, user, globalCommissi
   });
   const overallBalance = totalDue - totalPaid;
 
-  const formatNumber = (num) => new Intl.NumberFormat('ar-IQ').format(Math.round(num || 0));
+  const formatNumber = (num) => new Intl.NumberFormat('ar-YE').format(Math.round(num || 0));
 
   // Current month string for default selection
   const currentMonthStr = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`;
@@ -154,15 +154,15 @@ export default function UserBillingModal({ isOpen, onClose, user, globalCommissi
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
-                <p className="text-sm text-purple-600 font-medium">إجمالي المستحقات (العمولة)</p>
+                <p className="text-sm text-purple-600 font-medium">إجمالي المستحقات (ريال يمني)</p>
                 <p className="text-2xl font-bold text-purple-900 mt-1">{formatNumber(totalDue)}</p>
               </div>
               <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-                <p className="text-sm text-emerald-600 font-medium">إجمالي المدفوع</p>
+                <p className="text-sm text-emerald-600 font-medium">إجمالي المدفوع (ريال يمني)</p>
                 <p className="text-2xl font-bold text-emerald-900 mt-1">{formatNumber(totalPaid)}</p>
               </div>
               <div className={`p-4 rounded-xl border ${overallBalance > 0 ? 'bg-red-50 border-red-100' : 'bg-gray-50 border-gray-200'}`}>
-                <p className={`text-sm font-medium ${overallBalance > 0 ? 'text-red-600' : 'text-gray-600'}`}>الديون المتبقية</p>
+                <p className={`text-sm font-medium ${overallBalance > 0 ? 'text-red-600' : 'text-gray-600'}`}>الديون المتبقية (ريال يمني)</p>
                 <p className={`text-2xl font-bold mt-1 ${overallBalance > 0 ? 'text-red-900' : 'text-gray-900'}`}>
                   {formatNumber(overallBalance)}
                 </p>
@@ -176,7 +176,7 @@ export default function UserBillingModal({ isOpen, onClose, user, globalCommissi
               </h4>
               <form onSubmit={handleAddPayment} className="flex flex-col sm:flex-row gap-4 items-end">
                 <div className="flex-1 w-full">
-                  <label className="label-field">المبلغ المدفوع</label>
+                  <label className="label-field">المبلغ المدفوع (ريال يمني)</label>
                   <input 
                     type="number" 
                     min="1"
@@ -214,10 +214,10 @@ export default function UserBillingModal({ isOpen, onClose, user, globalCommissi
                     <thead>
                       <tr className="table-header">
                         <th className="px-4 py-3 text-right">الشهر</th>
-                        <th className="px-4 py-3 text-right">إجمالي المبيعات</th>
-                        <th className="px-4 py-3 text-right">العمولة المستحقة</th>
-                        <th className="px-4 py-3 text-right">تم سداده</th>
-                        <th className="px-4 py-3 text-right">المتبقي (الديون)</th>
+                        <th className="px-4 py-3 text-right">إجمالي المبيعات (ريال يمني)</th>
+                        <th className="px-4 py-3 text-right">العمولة المستحقة (ريال يمني)</th>
+                        <th className="px-4 py-3 text-right">تم سداده (ريال يمني)</th>
+                        <th className="px-4 py-3 text-right">المتبقي (ريال يمني)</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">

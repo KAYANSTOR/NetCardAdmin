@@ -235,7 +235,7 @@ export default function UsersPage() {
     return matchesSearch;
   });
 
-  const formatNumber = (num) => new Intl.NumberFormat('ar-IQ').format(Math.round(num || 0));
+  const formatNumber = (num) => new Intl.NumberFormat('ar-YE').format(Math.round(num || 0));
 
   if (loading) return <LoadingSpinner size="lg" />;
 
@@ -291,7 +291,7 @@ export default function UsersPage() {
                 <th className="text-right px-6 py-4">الشبكة</th>
                 <th className="text-right px-6 py-4">النوع</th>
                 <th className="text-right px-6 py-4">العمولة</th>
-                <th className="text-right px-6 py-4">الديون (المستحق)</th>
+                <th className="text-right px-6 py-4">الديون (ريال يمني)</th>
                 <th className="text-right px-6 py-4">تاريخ التصفية</th>
                 <th className="text-right px-6 py-4">الإجراءات السريعة</th>
               </tr>

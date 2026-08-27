@@ -90,10 +90,10 @@ export default function DashboardPage() {
   if (loading) return <LoadingSpinner size="lg" />;
 
   const formatNumber = (num) => {
-    return new Intl.NumberFormat('ar-IQ').format(Math.round(num || 0));
+    return new Intl.NumberFormat('ar-YE').format(Math.round(num || 0));
   };
 
-  const today = new Intl.DateTimeFormat('ar-IQ', {
+  const today = new Intl.DateTimeFormat('ar-YE', {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
@@ -149,13 +149,13 @@ export default function DashboardPage() {
                 </div>
                 <div className="dashboard-hero-value">
                   <strong>{formatNumber(stats.totalSales)}</strong>
-                  <span>دينار</span>
+                  <span>ريال يمني</span>
                 </div>
                 <p>إجمالي قيمة عمليات البيع المكتملة</p>
               </div>
               <div className="dashboard-hero-secondary">
                 <span>أرباح الإدارة</span>
-                <strong>{formatNumber(stats.totalAdminEarnings)} <small>دينار</small></strong>
+                <strong>{formatNumber(stats.totalAdminEarnings)} <small>ريال يمني</small></strong>
               </div>
               <svg className="dashboard-hero-chart" viewBox="0 0 520 180" fill="none" aria-hidden="true">
                 <path
@@ -255,12 +255,12 @@ export default function DashboardPage() {
               <div className="dashboard-finance-row">
                 <div>
                   <span>إجمالي المبيعات</span>
-                  <strong>{formatNumber(stats.totalSales)} <small>دينار</small></strong>
+                  <strong>{formatNumber(stats.totalSales)} <small>ريال يمني</small></strong>
                 </div>
                 <div className="dashboard-finance-divider" />
                 <div>
                   <span>أرباح الإدارة</span>
-                  <strong>{formatNumber(stats.totalAdminEarnings)} <small>دينار</small></strong>
+                  <strong>{formatNumber(stats.totalAdminEarnings)} <small>ريال يمني</small></strong>
                 </div>
               </div>
             </div>
